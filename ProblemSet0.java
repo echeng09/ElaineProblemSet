@@ -10,8 +10,13 @@ public class ProblemSet0 {
 
         int[] test1Extra = {4, 1, 9, 3, 5, 7, -98, 3};
         int result1Extra = countInRange(test1Extra, 3, 10);
-        //should print 4
+        //should print 6
         System.out.println(result1Extra);
+
+        int[] test1Extra1 = {-5, -2, 74, -19, 49, 100, 0, 2};
+        int result1Extra1 = countInRange(test1Extra1, -5, 100);
+        //should print 6
+        System.out.println(result1Extra1);
 
         //2)
         ArrayList<String> test2 = new ArrayList<>();
