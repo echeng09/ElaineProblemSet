@@ -15,7 +15,7 @@ public class ProblemSet0 {
 
         int[] test1Extra1 = {-5, -2, 74, -19, 49, 100, 0, 2};
         int result1Extra1 = countInRange(test1Extra1, -5, 100);
-        //should print 6
+        //should print 7
         System.out.println(result1Extra1);
 
         //2)
@@ -56,6 +56,15 @@ public class ProblemSet0 {
         System.out.println(isMagicSquare(testTrue));
         //should print false
         System.out.println(isMagicSquare(testFalse));
+
+        int[][] notASquare = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9},
+            {6, 5, 3}
+        }; 
+        //should print false
+        System.out.println(isMagicSquare(notASquare));
 
         //4)
         int[] arr4 = {2, 3, 10, 1, 5};
