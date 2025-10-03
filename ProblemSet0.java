@@ -8,6 +8,11 @@ public class ProblemSet0 {
         //should print 4
         System.out.println(result1);
 
+        int[] test1Extra = {4, 1, 9, 3, 5, 7, -98, 3};
+        int result1Extra = countInRange(test1Extra, 3, 10);
+        //should print 4
+        System.out.println(result1Extra);
+
         //2)
         ArrayList<String> test2 = new ArrayList<>();
         test2.add("hi");
@@ -18,6 +23,17 @@ public class ProblemSet0 {
         clump(test2);
         //should print [(hi there), (what is), up?]
         System.out.println(test2);  
+        
+        ArrayList<String> test2Extra = new ArrayList<>();
+        test2Extra.add("hello");
+        test2Extra.add("my");
+        test2Extra.add("name");
+        test2Extra.add("is");
+        test2Extra.add("Elaine");
+        test2Extra.add("Cheng");
+        clump(test2Extra);
+        //should print [(hello my), (name is), (Elaine Cheng)]
+        System.out.println(test2Extra);  
         
         //3)
         int[][] testTrue = {
@@ -84,33 +100,33 @@ public class ProblemSet0 {
 
     //3)
     public static boolean isMagicSquare(int[][] square) {
-    int n = square.length;
-    //not square
+    int numRows = square.length;
+    //not square (if rows not the same as the column length)
     for (int[] row : square) {
-        if (row.length != n){
+        if (row.length != numRows){
             return false;
         }
     }
     //get sum of first row
     int sum = 0;
-    for (int j = 0; j < n; j++) {
-        sum += square[0][j];
+    for (int i = 0; i < numRows; i++) {
+        sum += square[0][i];
     }
     //check rows w/ target sum
-    for (int i = 1; i < n; i++) {
+    for (int r = 1; r < numRows; r++) {
         int rowSum = 0;
-        for (int j = 0; j < n; j++) {
-            rowSum += square[i][j];
+        for (int x = 0; x < numRows; x++) {
+            rowSum += square[r][x];
         }
         if (rowSum != sum) {
             return false;
         }
     }
     //check columns w/ target sum
-    for (int j = 0; j < n; j++) {
+    for (int c = 0; c < numRows; c++) {
         int colSum = 0;
-        for (int i = 0; i < n; i++) {
-            colSum += square[i][j];
+        for (int y = 0; y < numRows; y++) {
+            colSum += square[y][c];
         }
         if (colSum != sum){
             return false;  
@@ -118,8 +134,8 @@ public class ProblemSet0 {
     }
     //check major diagonal
     int diagonal = 0;
-    for (int i = 0; i < n; i++) {
-        diagonal += square[i][i];
+    for (int d = 0; d < numRows; d++) {
+        diagonal += square[d][d];
     }
     if (diagonal != sum){
         return false;
@@ -130,22 +146,22 @@ public class ProblemSet0 {
 
     //4)
     public static int median(int[] arr) {
-        int[] count = new int[100];
+        int[] counter = new int[100];
         //set only vals in original array in the new array to 1 (to know which values are in it)
-        for (int num : arr) {
-            count[num]++;
+        for (int x: arr) {
+            counter[x]++;
         }
         //making an array to add up total counted in the counter array to find which values to include
-        int total = 0;
+        int add = 0;
         //find the spot of the median (odd num) - index if sorted
-        int mid = arr.length / 2;
+        int middle = arr.length / 2;
         //using for loop to iterate through the counter array
         for (int i = 0; i < 100; i++) {
             //add the count to the total (1 if it is within the array, 0 if not)
-            total += count[i];
+            add += counter[i];
             //if the total (of added ones) is greater than the middle index, return i of the counter array
             //this gets the median value
-            if (total > mid) {
+            if (add > middle) {
                 return i;
             }
         }
